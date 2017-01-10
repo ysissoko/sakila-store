@@ -31,21 +31,21 @@ angular
         url: '/ActorManagement',
         templateUrl: 'views/actormanagement.html',
         controller: 'ActorCtrl',
-        controllerAs: 'actor'
+        controllerAs: 'ctrl'
       })
       .state({
         name: 'categories',
         url: '/CategoryManagement',
         templateUrl: 'views/categorymanagement.html',
         controller: 'CategoryCtrl',
-        controllerAs: 'category'
+        controllerAs: 'ctrl'
       })
       .state({
         name: 'films',
         url: '/FilmManagement',
         templateUrl: 'views/filmmanagement.html',
         controller: 'FilmCtrl',
-        controllerAs: 'film'
+        controllerAs: 'ctrl'
       });
 
       $urlRouterProvider.otherwise('/');
