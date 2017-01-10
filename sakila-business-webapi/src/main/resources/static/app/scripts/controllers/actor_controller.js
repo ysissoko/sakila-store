@@ -9,5 +9,5 @@
  */
 angular.module('sakilaWebapiFrontendApp')
   .controller('ActorCtrl',['actorService', function (actorService) {
-    
+	  
   }]);

@@ -13,33 +13,40 @@ angular
     'ngAnimate',
     'ngCookies',
     'ngResource',
-    'ngRoute',
+    'ui.router',
     'ngSanitize',
     'ngTouch'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
+  .config(function ($stateProvider, $urlRouterProvider) {
+    $stateProvider
+      .state({
+        name: 'home',
+        url: '/',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/ActorManagement', {
-        templateUrl: 'views/actormanagemen.html',
+      .state({
+        name: 'actors',
+        url: '/ActorManagement',
+        templateUrl: 'views/actormanagement.html',
         controller: 'ActorCtrl',
-        controllerAs: 'Actor'
+        controllerAs: 'actor'
       })
-      .when('/CategoryManagement', {
+      .state({
+        name: 'categories',
+        url: '/CategoryManagement',
         templateUrl: 'views/categorymanagement.html',
         controller: 'CategoryCtrl',
-        controllerAs: 'Category'
+        controllerAs: 'category'
       })
-      .when('/FilmManagement', {
+      .state({
+        name: 'films',
+        url: '/FilmManagement',
         templateUrl: 'views/filmmanagement.html',
         controller: 'FilmCtrl',
-        controllerAs: 'Film'
-      })
-      .otherwise({
-        redirectTo: '/'
+        controllerAs: 'film'
       });
+
+      $urlRouterProvider.otherwise('/');
   });
