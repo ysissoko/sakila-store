@@ -74,6 +74,13 @@ angular
         templateUrl: 'views/countrymanagement.html',
         controller: 'CountryCtrl',
         controllerAs: 'ctrl'
+      })
+      .state({
+        name: 'customers',
+        url: '/CustomerManagement',
+        templateUrl: 'views/customermanagement.html',
+        controller: 'CustomerCtrl',
+        controllerAs: 'ctrl'
       });
 
       $urlRouterProvider.otherwise('/');
