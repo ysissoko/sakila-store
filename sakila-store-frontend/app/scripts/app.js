@@ -81,6 +81,12 @@ angular
         templateUrl: 'views/customermanagement.html',
         controller: 'CustomerCtrl',
         controllerAs: 'ctrl'
+      })
+      .state({
+        name: 'login',
+        url: '/login',
+        templateUrl:
+        'views/login.html'
       });
 
       $urlRouterProvider.otherwise('/');
