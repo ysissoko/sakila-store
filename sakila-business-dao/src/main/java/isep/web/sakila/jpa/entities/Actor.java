@@ -2,6 +2,11 @@ package isep.web.sakila.jpa.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -31,6 +36,8 @@ public class Actor implements Serializable {
 	private Timestamp lastUpdate;
 
 	//bi-directional many-to-one association to FilmActor
+	@Autowired
+	@JsonIgnore
 	@OneToMany(mappedBy="actor")
 	private List<FilmActor> filmActors;
 

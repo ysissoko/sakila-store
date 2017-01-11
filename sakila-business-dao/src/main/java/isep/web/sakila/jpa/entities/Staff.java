@@ -2,6 +2,9 @@ package isep.web.sakila.jpa.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -47,24 +50,29 @@ public class Staff implements Serializable {
 
 	//bi-directional many-to-one association to Payment
 	@OneToMany(mappedBy="staff")
+	@JsonIgnore
 	private List<Payment> payments;
 
 	//bi-directional many-to-one association to Rental
 	@OneToMany(mappedBy="staff")
+	@JsonIgnore
 	private List<Rental> rentals;
 
 	//bi-directional many-to-one association to Address
 	@ManyToOne
 	@JoinColumn(name="address_id", nullable=false)
+	@JsonIgnore
 	private Address address;
 
 	//bi-directional many-to-one association to Store
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="store_id", nullable=false)
 	private Store store;
 
 	//bi-directional many-to-one association to Store
 	@OneToMany(mappedBy="staff")
+	@JsonIgnore
 	private List<Store> stores;
 
 	public Staff() {

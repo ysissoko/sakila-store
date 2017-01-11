@@ -2,6 +2,9 @@ package isep.web.sakila.jpa.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.sql.Timestamp;
 
 
@@ -23,11 +26,13 @@ public class FilmActor implements Serializable {
 
 	//bi-directional many-to-one association to Actor
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="actor_id", nullable=false, insertable=false, updatable=false)
 	private Actor actor;
 
 	//bi-directional many-to-one association to Film
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="film_id", nullable=false, insertable=false, updatable=false)
 	private Film film;
 

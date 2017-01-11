@@ -2,6 +2,9 @@ package isep.web.sakila.jpa.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 import java.sql.Timestamp;
 import java.util.List;
@@ -43,6 +46,7 @@ public class Customer implements Serializable {
 
 	//bi-directional many-to-one association to Address
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="address_id", nullable=false)
 	private Address address;
 

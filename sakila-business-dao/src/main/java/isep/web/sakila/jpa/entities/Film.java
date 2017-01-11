@@ -2,6 +2,9 @@ package isep.web.sakila.jpa.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.sql.Timestamp;
@@ -55,23 +58,28 @@ public class Film implements Serializable {
 
 	//bi-directional many-to-one association to Language
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="language_id", nullable=false)
 	private Language language1;
 
 	//bi-directional many-to-one association to Language
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="original_language_id")
 	private Language language2;
 
 	//bi-directional many-to-one association to FilmActor
 	@OneToMany(mappedBy="film")
+	@JsonIgnore
 	private List<FilmActor> filmActors;
 
 	//bi-directional many-to-one association to FilmCategory
+	@JsonIgnore
 	@OneToMany(mappedBy="film")
 	private List<FilmCategory> filmCategories;
 
 	//bi-directional many-to-one association to Inventory
+	@JsonIgnore
 	@OneToMany(mappedBy="film")
 	private List<Inventory> inventories;
 

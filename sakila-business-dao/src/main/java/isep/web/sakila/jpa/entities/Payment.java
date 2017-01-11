@@ -2,6 +2,9 @@ package isep.web.sakila.jpa.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.sql.Timestamp;
@@ -34,16 +37,19 @@ public class Payment implements Serializable {
 
 	//bi-directional many-to-one association to Customer
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="customer_id", nullable=false)
 	private Customer customer;
 
 	//bi-directional many-to-one association to Rental
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="rental_id")
 	private Rental rental;
 
 	//bi-directional many-to-one association to Staff
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="staff_id", nullable=false)
 	private Staff staff;
 

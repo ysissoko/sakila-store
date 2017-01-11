@@ -2,6 +2,9 @@ package isep.web.sakila.jpa.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -28,10 +31,12 @@ public class Language implements Serializable {
 	private String name;
 
 	//bi-directional many-to-one association to Film
+	@JsonIgnore
 	@OneToMany(mappedBy="language1")
 	private List<Film> films1;
 
 	//bi-directional many-to-one association to Film
+	@JsonIgnore
 	@OneToMany(mappedBy="language2")
 	private List<Film> films2;
 
