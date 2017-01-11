@@ -46,6 +46,13 @@ angular
         templateUrl: 'views/filmmanagement.html',
         controller: 'FilmCtrl',
         controllerAs: 'ctrl'
+      })
+    .state({
+        name: 'languages',
+        url: '/LanguageManagement',
+        templateUrl: 'views/languagemanagement.html',
+        controller: 'LanguageCtrl',
+        controllerAs: 'ctrl'
       });
 
       $urlRouterProvider.otherwise('/');

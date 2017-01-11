@@ -1,1 +1,54 @@
-<p>This is the FilmManagement view.</p>
+<div class="generic-container">
+     <div class="panel panel-default">
+         <div class="panel-heading"><span class="lead">Film Management Form</span></div>
+         <div class="formcontainer">
+             <form ng-submit="ctrl.submit()" name="myForm" class="form-horizontal">
+                 <input type="hidden" ng-model="ctrl.film.filmId" />
+                 <div class="row">
+                     <div class="form-group col-md-12">
+                         <label class="col-md-2 control-lable" for="filmTitle">Film name</label>
+                         <div class="col-md-7">
+                             <input type="text" ng-model="ctrl.film.title" name="filmTitle" class="form-control input-sm" placeholder="Enter the new film name" required ng-minlength="3"/>
+                             <div class="has-error" ng-show="myForm.$dirty">
+                                 <span ng-show="myForm.filmTitle.$error.required">This is a required field</span>
+                                 <span ng-show="myForm.filmTitle.$error.minlength">Minimum length required is 3</span>
+                                 <span ng-show="myForm.filmTitle.$invalid">This field is invalid </span>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+
+                 <div class="row">
+                     <div class="form-actions floatRight">
+                         <input type="submit"  value="{{!ctrl.film.filmId ? 'Add' : 'Update'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid">
+                         <button type="button" ng-click="ctrl.reset()" class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Reset Form</button>
+                     </div>
+                 </div>
+             </form>
+         </div>
+     </div>
+     <div class="panel panel-default">
+           <!-- Default panel contents -->
+         <div class="panel-heading"><span class="lead">List of Films</span></div>
+         <div class="tablecontainer">
+             <table class="table table-hover">
+                 <thead>
+                     <tr>
+                         <th>ID.</th>
+                         <th>Name</th>
+                         <th width="20%"></th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                     <tr ng-repeat="c in ctrl.films">
+                         <td><span ng-bind="c.filmId"></span></td>
+                         <td><span ng-bind="c.name"></span></td>
+                         <td>
+                         <button type="button" ng-click="ctrl.edit(c.filmId)" class="btn btn-success custom-width">Edit</button>  <button type="button" ng-click="ctrl.remove(c.filmId)" class="btn btn-danger custom-width">Remove</button>
+                         </td>
+                     </tr>
+                 </tbody>
+             </table>
+         </div>
+     </div>
+ </div>

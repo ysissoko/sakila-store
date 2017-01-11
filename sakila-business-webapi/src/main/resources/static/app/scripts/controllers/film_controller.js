@@ -10,7 +10,7 @@
 angular.module('sakilaWebapiFrontendApp')
   .controller('FilmCtrl', ['$scope', 'FilmService', function ($scope, FilmService) {
        var self = this;
-       self.film={filmId:null,title:'',description:'',releaseYear: new Date(), languageId: null, originalLanguageId: null, rentalDuration: 0, rentalRate: 0.0, length: 0, replacementCost: 0.0, rating: 0.0, specialFeatures: '', lastUpdate: new Date(), actors: [], categories: [], inventories: [] };
+       self.film={filmId:null,title:'',description:'',releaseYear: new Date(), languageId: '', originalLanguageId: null, rentalDuration: 0, rentalRate: 0.0, length: 0, replacementCost: 0.0, rating: 0.0, specialFeatures: '', lastUpdate: new Date(), actors: [], categories: [], inventories: [] };
        self.films=[];
 
        self.fetchAllFilms = function(){
