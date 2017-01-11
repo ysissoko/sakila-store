@@ -53,6 +53,27 @@ angular
         templateUrl: 'views/languagemanagement.html',
         controller: 'LanguageCtrl',
         controllerAs: 'ctrl'
+      })
+          .state({
+        name: 'inventories',
+        url: '/InventoryManagement',
+        templateUrl: 'views/inventorymanagement.html',
+        controller: 'InventoryCtrl',
+        controllerAs: 'ctrl'
+      })
+      .state({
+        name: 'cities',
+        url: '/CityManagement',
+        templateUrl: 'views/citymanagement.html',
+        controller: 'CityCtrl',
+        controllerAs: 'ctrl'
+      })
+      .state({
+        name: 'countries',
+        url: '/CountryManagement',
+        templateUrl: 'views/countrymanagement.html',
+        controller: 'CountryCtrl',
+        controllerAs: 'ctrl'
       });
 
       $urlRouterProvider.otherwise('/');
