@@ -11,14 +11,14 @@ import isep.web.sakila.jpa.entities.FilmCategory;
 import isep.web.sakila.jpa.entities.Inventory;
 import isep.web.sakila.jpa.entities.Language;
 
-public class FilmWO extends WebObject{
+public class FilmWO extends WebObject {
 
 	private static final long serialVersionUID = -8494386839845787279L;
 	private int filmId;
 	private String title;
 	private String description;
 	private Date releaseYear;
-	private Language language;
+	private int language;
 	private Language originalLanguage;
 	private byte rentalDuration;
 	private BigDecimal rentalRate;
@@ -30,13 +30,15 @@ public class FilmWO extends WebObject{
 	private List<FilmActor> actors;
 	private List<FilmCategory> categories;
 	private List<Inventory> inventories;
-	
-	public FilmWO(){
+
+	public FilmWO() {
 		super();
 	}
-	
-	public FilmWO(int filmId, String title, String description, Date releaseYear, Language language, Language originalLanguage, byte rentalDuration, BigDecimal rentalRate, int length, BigDecimal replacementCost, String rating, String specialFeatures, List<FilmActor> actors, List<FilmCategory> categories, List<Inventory> inventories, Timestamp lastUpdate)
-	{
+
+	public FilmWO(int filmId, String title, String description, Date releaseYear, int language,
+			Language originalLanguage, byte rentalDuration, BigDecimal rentalRate, int length,
+			BigDecimal replacementCost, String rating, String specialFeatures, List<FilmActor> actors,
+			List<FilmCategory> categories, List<Inventory> inventories, Timestamp lastUpdate) {
 		super();
 		this.filmId = filmId;
 		this.title = title;
@@ -50,19 +52,19 @@ public class FilmWO extends WebObject{
 		this.replacementCost = replacementCost;
 		this.rating = rating;
 		this.specialFeatures = specialFeatures;
-		this.lastUpdate = lastUpdate;	
+		this.lastUpdate = lastUpdate;
 		this.actors = actors;
 		this.categories = categories;
 		this.inventories = inventories;
 	}
 
-	public FilmWO(final Film film){
+	public FilmWO(final Film film) {
 		super();
 		this.filmId = film.getFilmId();
 		this.title = film.getTitle();
 		this.description = film.getDescription();
 		this.releaseYear = film.getReleaseYear();
-		this.language = film.getLanguage1();
+		this.language = film.getLanguage1().getLanguageId();
 		this.originalLanguage = film.getLanguage2();
 		this.rentalDuration = film.getRentalDuration();
 		this.rentalRate = film.getRentalRate();
@@ -75,7 +77,7 @@ public class FilmWO extends WebObject{
 		this.actors = film.getFilmActors();
 		this.inventories = film.getInventories();
 	}
-	
+
 	public List<Inventory> getInventories() {
 		return inventories;
 	}
@@ -116,11 +118,11 @@ public class FilmWO extends WebObject{
 		this.releaseYear = releaseYear;
 	}
 
-	public Language getLanguage() {
+	public int getLanguage() {
 		return language;
 	}
 
-	public void setLanguage(Language language) {
+	public void setLanguage(int language) {
 		this.language = language;
 	}
 
@@ -187,7 +189,7 @@ public class FilmWO extends WebObject{
 	public void setLastUpdate(Timestamp lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
-	
+
 	public List<FilmActor> getActors() {
 		return actors;
 	}
@@ -213,5 +215,4 @@ public class FilmWO extends WebObject{
 				+ ", lastUpdate=" + lastUpdate + ", actors=" + actors + ", categories=" + categories + "]";
 	}
 
-	
 }
