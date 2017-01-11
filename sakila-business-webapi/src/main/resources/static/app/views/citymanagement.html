@@ -1,11 +1,11 @@
-<div class="generic-container" ng-controller="CityController as ctrl">
+<div class="generic-container">
           <div class="panel panel-default">
               <div class="panel-heading"><span class="lead">City Management Form </span></div>
               <div class="formcontainer">
                   <form ng-submit="ctrl.submit()" name="myForm" class="form-horizontal">
-                      
+
                       <input type="hidden" ng-model="ctrl.city.cityId" />
-                      
+
                       <div class="row">
                           <div class="form-group col-md-12">
                               <label class="col-md-2 control-lable" for="file">City Name</label>
@@ -19,21 +19,21 @@
                               </div>
                           </div>
                       </div>
-                        
+
                      <!--  <input type="hidden" ng-model="ctrl.city.countryId" /> -->
-                      
+
                       <div class="row">
                           <div class="form-group col-md-12">
                               <label class="col-md-2 control-lable" for="file">Country Name</label>
-                              <div class="col-md-7" ng-controller="CountryController as ctrl_country">
-								<select name="selectCountry" ng-model="ctrl.city.countryId">
-									<option value="">Select the country :</option>
-									<option ng-repeat="c in ctrl_country.countries" value="{{c.countryId}}">{{c.country}}</option>
-								</select>
-							</div>
+                              <div class="col-md-7">
+                								<select name="selectCountry" ng-model="ctrl.city.countryId">
+                									<option value="">Select the country :</option>
+                									<option ng-repeat="c in ctrl_country.countries" value="{{c.countryId}}">{{c.country}}</option>
+                								</select>
+                							</div>
                           </div>
                       </div>
-                      
+
 
                       <div class="row">
                           <div class="form-actions floatRight">
@@ -63,7 +63,7 @@
                               <td><span ng-bind="u.city"></span></td>
                               <td><span ng-bind="u.countryId"></span></td>
                               <td>
-                              <button type="button" ng-click="ctrl.edit(u)" class="btn btn-success custom-width">Edit</button> 
+                              <button type="button" ng-click="ctrl.edit(u)" class="btn btn-success custom-width">Edit</button>
                               </td>
                           </tr>
                       </tbody>
@@ -71,4 +71,3 @@
               </div>
           </div>
       </div>
-      

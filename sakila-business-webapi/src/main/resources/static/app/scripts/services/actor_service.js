@@ -9,9 +9,7 @@
  */
 angular.module('sakilaWebapiFrontendApp')
   .service('ActorService', ['$http', '$q', function ($http, $q) {
-
     var _self = this;
-
     _self.fetchAllActors = function() {
 					return $http.get('http://localhost:8080/actor/')
 							.then(

@@ -1,8 +1,8 @@
 /**
- * 
+ *
  */
-
-App.factory('CustomerService', ['$http', '$q', function($http, $q){
+angular.module('sakilaWebapiFrontendApp')
+.service('CustomerService', ['$http', '$q', function($http, $q){
 	return {
 		getCustomer: function(){
 			return $http.get('http://localhost:8080/Customers/').then(
@@ -36,5 +36,5 @@ App.factory('CustomerService', ['$http', '$q', function($http, $q){
 			)
 		}
 	}
-	
+
 }]);

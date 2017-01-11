@@ -1,13 +1,19 @@
 'use strict';
 
-App.controller('CustomerController', ['$scope', '$cookieStore', 'CustomerService', 
-                                      function($scope, $cookieStore, CustomerService) {
+angular.module('sakilaWebapiFrontendApp')
+.controller('CustomerCtrl', ['$scope', '$cookieStore', 'CustomerService','CityService', function($scope, $cookieStore, CustomerService, CityService) {
 	var self = this;
-	
-	self.customer={customerId:null,store_id:'1',firstName:'',lastName:'',email:'',phone:'',
-			addressId:null ,address:'',address2:'',district:'',city_id:'', postalCode:'',active:null};
+
+	self.customer={customerId:null,store_id:'1',firstName:'',lastName:'',email:'',phone:'', addressId:null ,address:'',address2:'',district:'',city_id:'', postalCode:'',active:null};
 	self.customers=[];
-	
+  self.cities = [];
+
+  CityService.fetchAllCities().then(function(cities){
+    self.cities = cities;
+  }, function(errResponse){
+      console.log("CustomerService: error fetching cities")
+  })
+
 	self.fetchAllCustomers = function(){
 		CustomerService.getCustomer().then(
 			       function(d) {
@@ -19,7 +25,7 @@ App.controller('CustomerController', ['$scope', '$cookieStore', 'CustomerService
 					}
 		       );
 	};
-	
+
 	self.createCustomer = function(customer){
 		CustomerService.createCustomer(customer).then(
 				self.fetchAllCustomers, function(errResponse){
@@ -31,16 +37,16 @@ App.controller('CustomerController', ['$scope', '$cookieStore', 'CustomerService
 	   console.log("update customer");
         CustomerService.updateCustomer(customer)
         .then(
-                self.fetchAllCustomers, 
+                self.fetchAllCustomers,
 			              function(errResponse){
 				               console.error('Error while updating Customer.');
-			              }	
+			              }
             );
     };
-    
+
     self.submit = function() {
         if(self.customer.customerId==null){
-            console.log('Saving New Customer', self.customer); 
+            console.log('Saving New Customer', self.customer);
             self.customer['store_id'] = $cookieStore.get('store_id');
             self.createCustomer(self.customer);
         }else{
@@ -50,7 +56,7 @@ App.controller('CustomerController', ['$scope', '$cookieStore', 'CustomerService
         }
         self.reset();
     };
-    
+
     self.edit = function(customerId,addressId){
         console.log('customer id to be edited', customerId);
         console.log('address id to be edited', addressId);
@@ -64,13 +70,13 @@ App.controller('CustomerController', ['$scope', '$cookieStore', 'CustomerService
             }
         }
     };
-    
+
     self.fetchAllCustomers();
-	
-	self.reset = function(){
-		self.customer={customerId:null,store_id:'1',firstName:'',lastName:'',email:'',phone:'',
-				addressId:null ,address:'',address2:'',district:'',city_id:'', postalCode:'',active:null};
-        $scope.myForm.$setPristine();
+
+    self.reset = function(){
+    	    self.customer={customerId:null,store_id:'1',firstName:'',lastName:'',email:'',phone:'',
+    			addressId:null ,address:'',address2:'',district:'',city_id:'', postalCode:'',active:null};
+          $scope.myForm.$setPristine();
     };
-    
+
 }]);

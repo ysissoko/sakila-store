@@ -1,18 +1,15 @@
-<div class="generic-container"
-		ng-controller="CustomerController as ctrl">
+<div class="generic-container">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<span class="lead">Customer Management Form </span>
 			</div>
 			<div class="formcontainer">
-				<form ng-submit="ctrl.submit()" name="myForm"
-					class="form-horizontal">
+				<form ng-submit="ctrl.submit()" name="myForm"	class="form-horizontal">
 					<input type="hidden" ng-model="ctrl.customer.customerId" /> <input
 						type="hidden" ng-model="ctrl.customer.addressId" />
 					<div class="row">
 						<div class="form-group col-md-12">
-							<label class="col-md-2 control-lable" for="file">Last
-								Name</label>
+							<label class="col-md-2 control-lable" for="file">Last Name</label>
 							<div class="col-md-7">
 								<input type="text" ng-model="ctrl.customer.lastName"
 									name="lastName" class="form-control input-sm"
@@ -101,12 +98,12 @@
 					<div class="row">
 						<div class="form-group col-md-12">
 							<label class="col-md-2 control-lable" for="file"> Select city: </label><br>
-							<div class="col-md-7" ng-controller="CityController as ctrlCity">
+							<div class="col-md-7">
 								<select name="city_id" ng-model="ctrl.customer.city_id" required>
-									<option value="">Select the city :</option>						
-									<option ng-repeat="c in ctrlCity.cities" value="{{c.cityId}}">{{c.city}}</option>
+									<option value="">Select the city :</option>
+									<option ng-repeat="c in ctrl.cities" value="{{c.cityId}}">{{c.city}}</option>
 								</select><br/>
-								
+
 								<div class="has-error" ng-show="myForm.$dirty">
 									<span ng-show="myForm.cityId.$error.required">This is a
 										required field</span>
@@ -187,6 +184,3 @@
 		</div>
 	</div>
 	<script>
-		$("#city_id").val(1);
-
-	
