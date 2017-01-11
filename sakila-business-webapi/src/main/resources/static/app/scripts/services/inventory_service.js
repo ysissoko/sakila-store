@@ -8,10 +8,8 @@
  * Service in the sakilaWebapiFrontendApp.
  */
 angular.module('sakilaWebapiFrontendApp')
-  .service('ActorService', ['$http', '$q', function ($http, $q) {
-
-    var _self = this;
-
+  .service('InventoryService', ['$http', '$q', function ($http, $q) {
+      var _self = this;
       _self.createInventoryFilm = function(filmId){
 					return $http.post('http://localhost:8080/createInventoryFilm/', filmId)
 							.then(

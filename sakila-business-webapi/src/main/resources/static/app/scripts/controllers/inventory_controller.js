@@ -28,10 +28,10 @@ angular.module('sakilaWebapiFrontendApp')
 	   			last_update:''
 	   	};
    		self.inventories = [];
-   		self.films=[];
+   		self.films= [];
 
         self.fetchAllFilms= function(){
-            LanguageService.fetchAllFilms()
+            FilmService.fetchAllFilms()
                 .then(
     					       function(films) {
     						        self.films = films;
@@ -41,15 +41,15 @@ angular.module('sakilaWebapiFrontendApp')
           					}
     			       );
         };
-        
+
        self.createInventory = function(inventory){
-    	   var map = {filmId: inventory['filmId'], storeId: $cookieStore.get('store_id')};
-   		InventoryService.createInventory(map).then(
-   				self.setQuantity,
-   				function(err){
-   					console.log("Error: controlle failed to greate a inventory");
-   				}
-   		)
+    	    var map = {filmId: inventory['filmId'], storeId: $cookieStore.get('store_id')};
+       		InventoryService.createInventory(map).then(
+       				self.setQuantity,
+       				function(err){
+       					console.log("Error: controlle failed to greate a inventory");
+       				}
+       		)
        };
 
       self.deleteInventory = function(inventoryId){
@@ -63,5 +63,5 @@ angular.module('sakilaWebapiFrontendApp')
        };
 
    	self.fetchAllFilms();
-   	
+
   }]);
