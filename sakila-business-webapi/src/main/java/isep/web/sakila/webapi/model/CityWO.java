@@ -2,15 +2,21 @@ package isep.web.sakila.webapi.model;
 
 import java.sql.Timestamp;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import isep.web.sakila.jpa.entities.Address;
 import isep.web.sakila.jpa.entities.City;
 
 public class CityWO extends WebObject {
 
 	private static final long serialVersionUID = 1L;
+	@JsonIgnore
 	private int cityId;
+	@JsonIgnore
 	private String city;
 	private Timestamp lastUpdate;
+	@JsonIgnore
 	private List<Address> addresses;
 	
 	public CityWO()
@@ -35,7 +41,7 @@ public class CityWO extends WebObject {
 		this.lastUpdate = city.getLastUpdate();
 		this.addresses = city.getAddresses();
 	}
-
+	@JsonIgnore
 	public int getCityId() {
 		return cityId;
 	}
@@ -43,7 +49,7 @@ public class CityWO extends WebObject {
 	public void setCityId(int cityId) {
 		this.cityId = cityId;
 	}
-
+	@JsonIgnore
 	public String getCity() {
 		return city;
 	}
@@ -51,7 +57,7 @@ public class CityWO extends WebObject {
 	public void setCity(String city) {
 		this.city = city;
 	}
-
+	@JsonIgnore
 	public Timestamp getLastUpdate() {
 		return lastUpdate;
 	}
@@ -59,7 +65,7 @@ public class CityWO extends WebObject {
 	public void setLastUpdate(Timestamp lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
-
+	@JsonIgnore
 	public List<Address> getAddresses() {
 		return addresses;
 	}

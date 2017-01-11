@@ -2,15 +2,22 @@ package isep.web.sakila.webapi.model;
 
 import java.sql.Timestamp;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import isep.web.sakila.jpa.entities.City;
 import isep.web.sakila.jpa.entities.Country;
 
 public class CountryWO extends WebObject {
 
 	private static final long serialVersionUID = 1L;
+	@JsonIgnore
 	private int countryId;
+	@JsonIgnore
 	private String country;
+	@JsonIgnore
 	private Timestamp lastUpdate;
+	@JsonIgnore
 	private List<City> cities;
 	
 	public CountryWO()
@@ -36,6 +43,7 @@ public class CountryWO extends WebObject {
 		this.cities = country.getCities();
 	}
 
+	@JsonIgnore
 	public int getCountryId() {
 		return countryId;
 	}
@@ -44,6 +52,7 @@ public class CountryWO extends WebObject {
 		this.countryId = countryId;
 	}
 
+	@JsonIgnore
 	public String getCountry() {
 		return country;
 	}
@@ -52,6 +61,7 @@ public class CountryWO extends WebObject {
 		this.country = country;
 	}
 
+	@JsonIgnore
 	public Timestamp getLastUpdate() {
 		return lastUpdate;
 	}
@@ -60,6 +70,7 @@ public class CountryWO extends WebObject {
 		this.lastUpdate = lastUpdate;
 	}
 
+	@JsonIgnore
 	public List<City> getCities() {
 		return cities;
 	}
