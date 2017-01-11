@@ -30,7 +30,7 @@ public class CustomerWO extends WebObject{
 	}
 
 	public CustomerWO(byte customerId, byte active, Date createDate, String email, String firstName, String lastName, Timestamp lastUpdate, Address address, Store store, List<Payment> payments, List<Rental> rentals)
-	{
+	{	
 		super();
 		this.customerId = customerId;
 		this.active = active;

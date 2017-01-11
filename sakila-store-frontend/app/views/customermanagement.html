@@ -54,7 +54,7 @@
 							<label class="col-md-2 control-lable" for="file">Phone
 								number</label>
 							<div class="col-md-7">
-								<input type="text" ng-model="ctrl.customer.phone" name="phone"
+								<input type="text" ng-model="ctrl.customer.address.phone" name="phone"
 									class="form-control input-sm"
 									placeholder="Enter Customer phone number. [This field is validation free]" />
 							</div>
@@ -65,7 +65,7 @@
 						<div class="form-group col-md-12">
 							<label class="col-md-2 control-lable" for="file">Address</label>
 							<div class="col-md-7">
-								<input type="text" ng-model="ctrl.customer.address"
+								<input type="text" ng-model="ctrl.customer.address.address"
 									name="address" class="form-control input-sm"
 									placeholder="Enter customer's address. [This field is validation free]" />
 							</div>
@@ -76,7 +76,7 @@
 							<label class="col-md-2 control-lable" for="file">Address
 								2</label>
 							<div class="col-md-7">
-								<input type="text" ng-model="ctrl.customer.address2"
+								<input type="text" ng-model="ctrl.customer.address.address2"
 									name="address2" class="form-control input-sm"
 									placeholder="Enter customer's address 2. [This field is validation free]" />
 							</div>
@@ -86,7 +86,7 @@
 						<div class="form-group col-md-12">
 							<label class="col-md-2 control-lable" for="file">District</label>
 							<div class="col-md-7">
-								<input type="text" ng-model="ctrl.customer.district"
+								<input type="text" ng-model="ctrl.customer.address.district"
 									name="district" class="form-control input-sm"
 									placeholder="Enter district. [This field is validation free]" />
 							</div>
@@ -117,7 +117,7 @@
 							<label class="col-md-2 control-lable" for="file">Postal
 								Code</label>
 							<div class="col-md-7">
-								<input type="text" ng-model="ctrl.customer.postalCode"
+								<input type="text" ng-model="ctrl.customer.address.postalCode"
 									name="postalCode" class="form-control input-sm"
 									placeholder="Enter postal code. [This field is validation free]" />
 							</div>
@@ -130,9 +130,9 @@
 								customer active?</label>
 							<div class="col-md-7">
 								<label> <input type="radio"
-									ng-model="ctrl.customer.active" ng-value="1">Yes
+									ng-model="ctrl.customer.active" value="1">Yes
 								</label> <label> <input type="radio"
-									ng-model="ctrl.customer.active" ng-value="0">No
+									ng-model="ctrl.customer.active" value="0">No
 								</label>
 							</div>
 						</div>
@@ -143,9 +143,7 @@
                     <input type="submit"  value="{{!ctrl.customer.customerId ? 'Add' : 'Update'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid">
                 </div>
             </div>
-							<button type="button" ng-click="ctrl.reset()"
-								class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Reset
-								Form</button>
+							<button type="button" ng-click="ctrl.reset()"class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Reset	Form</button>
 						</div>
 					</div>
 				</form>
@@ -172,9 +170,7 @@
 							<td><span ng-bind="u.lastName"></span></td>
 							<td><span ng-bind="u.firstName"></span></td>
 							<td>
-								<button type="button"
-									ng-click="ctrl.edit(u.customerId,u.addressId)"
-									class="btn btn-success custom-width">Edit</button>
+								<button type="button" ng-click="ctrl.edit(u.customerId,u.addressId)" class="btn btn-success custom-width">Edit</button> <button type="button" ng-click="ctrl.remove(u.customerId)" class="btn btn-danger custom-width">Remove</button>
 							</td>
 						</tr>
 					</tbody>

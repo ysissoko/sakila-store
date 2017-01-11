@@ -13,7 +13,7 @@ angular.module('sakilaWebapiFrontendApp')
     $scope.actors=[];
 
     var fetchAllActors = function(){
-        ActorService.fetchAllActors()
+    ActorService.fetchAllActors()
             .then(
                  function(actors) {
                     $scope.actors = actors;

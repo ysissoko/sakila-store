@@ -4,24 +4,24 @@ angular.module('sakilaWebapiFrontendApp')
 .controller('CustomerCtrl', ['$scope', '$cookieStore', 'CustomerService','CityService', function($scope, $cookieStore, CustomerService, CityService) {
 	var self = this;
 
-	self.customer={customerId:null,store_id:'1',firstName:'',lastName:'',email:'',phone:'', addressId:null ,address:'',address2:'',district:'',city_id:'', postalCode:'',active:null};
+	self.customer={customerId:null,firstName:'',lastName:'',email:'',phone:'', store:null, address: null,active:null};
 	self.customers=[];
   self.cities = [];
 
   CityService.fetchAllCities().then(function(cities){
     self.cities = cities;
   }, function(errResponse){
-      console.log("CustomerService: error fetching cities")
+      console.log("CustomerService: error fetching Cities")
   })
 
 	self.fetchAllCustomers = function(){
 		CustomerService.getCustomer().then(
 			       function(d) {
 					        self.customers = d;
-					        console.log('success to retrieve all customers');
+					        console.log('success to retrieve all Customers');
 				       },
 					function(errResponse){
-						console.error('Error while fetching Currencies');
+						console.error('Error while fetching Customers');
 					}
 		       );
 	};
