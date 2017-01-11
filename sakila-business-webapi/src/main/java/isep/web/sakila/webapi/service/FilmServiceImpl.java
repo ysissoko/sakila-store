@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import isep.web.sakila.dao.repositories.FilmRepository;
+import isep.web.sakila.dao.repositories.LanguageRepository;
 import isep.web.sakila.jpa.entities.Film;
+import isep.web.sakila.jpa.entities.Language;
 import isep.web.sakila.webapi.model.FilmWO;
 
 @Service("filmService")
@@ -19,6 +21,8 @@ import isep.web.sakila.webapi.model.FilmWO;
 public class FilmServiceImpl implements FilmService {
 	@Autowired
 	private FilmRepository filmRepository;
+	@Autowired
+	private LanguageRepository languageRepository;
 
 	private static final Log log = LogFactory.getLog(FilmServiceImpl.class);
 
@@ -51,8 +55,8 @@ public class FilmServiceImpl implements FilmService {
 		film.setTitle(filmWO.getTitle());
 		film.setDescription(filmWO.getDescription());
 		film.setReleaseYear(filmWO.getReleaseYear());
-		film.setLanguage1(filmWO.getLanguage());
-		film.setLanguage2(filmWO.getOriginalLanguage());
+		Language language1 = languageRepository.findOne(filmWO.getLanguage());
+		film.setLanguage1(language1);
 		film.setRentalDuration(filmWO.getRentalDuration());
 		film.setRentalRate(filmWO.getRentalRate());
 		film.setLength(filmWO.getLength());
@@ -72,8 +76,8 @@ public class FilmServiceImpl implements FilmService {
 		film2update.setTitle(filmWO.getTitle());
 		film2update.setDescription(filmWO.getDescription());
 		film2update.setReleaseYear(filmWO.getReleaseYear());
-		film2update.setLanguage1(filmWO.getLanguage());
-		film2update.setLanguage2(filmWO.getOriginalLanguage());
+		Language language1 = languageRepository.findOne(filmWO.getLanguage());
+		film2update.setLanguage1(language1);
 		film2update.setRentalDuration(filmWO.getRentalDuration());
 		film2update.setRentalRate(filmWO.getRentalRate());
 		film2update.setLength(filmWO.getLength());
