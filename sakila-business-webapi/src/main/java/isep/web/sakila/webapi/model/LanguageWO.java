@@ -5,7 +5,10 @@ import isep.web.sakila.jpa.entities.Language;
 
 public class LanguageWO extends WebObject {
 
-	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8795853915817284636L;
 	private int languageId;
 	private Timestamp lastUpdate;
 	private String name;

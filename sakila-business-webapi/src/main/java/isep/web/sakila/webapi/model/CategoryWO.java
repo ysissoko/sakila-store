@@ -6,7 +6,10 @@ import isep.web.sakila.jpa.entities.Category;
 
 public class CategoryWO extends WebObject{
 
-	protected static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4381398323710390855L;
 	protected int categoryId;
 	protected String name;
 	protected Timestamp lastUpdate;
