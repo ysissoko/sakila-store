@@ -1,1 +1,74 @@
-<p>This is the CityManagement view.</p>
+<div class="generic-container" ng-controller="CityController as ctrl">
+          <div class="panel panel-default">
+              <div class="panel-heading"><span class="lead">City Management Form </span></div>
+              <div class="formcontainer">
+                  <form ng-submit="ctrl.submit()" name="myForm" class="form-horizontal">
+                      
+                      <input type="hidden" ng-model="ctrl.city.cityId" />
+                      
+                      <div class="row">
+                          <div class="form-group col-md-12">
+                              <label class="col-md-2 control-lable" for="file">City Name</label>
+                              <div class="col-md-7">
+                                  <input type="text" ng-model="ctrl.city.city" name="city" class="form-control input-sm" placeholder="Enter the city name" required ng-minlength="3"/>
+                                  <div class="has-error" ng-show="myForm.$dirty">
+                                      <span ng-show="myForm.cityName.$error.required">This is a required field</span>
+                                      <span ng-show="myForm.cityName.$error.minlength">Minimum length required is 3</span>
+                                      <span ng-show="myForm.cityName.$invalid">This field is invalid </span>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                        
+                     <!--  <input type="hidden" ng-model="ctrl.city.countryId" /> -->
+                      
+                      <div class="row">
+                          <div class="form-group col-md-12">
+                              <label class="col-md-2 control-lable" for="file">Country Name</label>
+                              <div class="col-md-7" ng-controller="CountryController as ctrl_country">
+								<select name="selectCountry" ng-model="ctrl.city.countryId">
+									<option value="">Select the country :</option>
+									<option ng-repeat="c in ctrl_country.countries" value="{{c.countryId}}">{{c.country}}</option>
+								</select>
+							</div>
+                          </div>
+                      </div>
+                      
+
+                      <div class="row">
+                          <div class="form-actions floatRight">
+                              <input type="submit"  value="{{ctrl.city.cityId==' ' ? 'Add' : 'Update'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid">
+                              <button type="button" ng-click="ctrl.reset()" class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Reset Form</button>
+                          </div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+          <div class="panel panel-default">
+                <!-- Default panel contents -->
+              <div class="panel-heading"><span class="lead">List of Cities </span></div>
+              <div class="tablecontainer">
+                  <table class="table table-hover">
+                      <thead>
+                          <tr>
+                              <th>ID.</th>
+                              <th>City Name</th>
+                              <th>Country Name</th>
+                              <th width="20%"></th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr ng-repeat="u in ctrl.cities">
+                              <td><span ng-bind="u.cityId"></span></td>
+                              <td><span ng-bind="u.city"></span></td>
+                              <td><span ng-bind="u.countryId"></span></td>
+                              <td>
+                              <button type="button" ng-click="ctrl.edit(u)" class="btn btn-success custom-width">Edit</button> 
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+      
