@@ -8,10 +8,17 @@
  * Controller of the sakilaWebapiFrontendApp
  */
 angular.module('sakilaWebapiFrontendApp')
-  .controller('CityCtrl', ['$scope','CityService', function ($scope, CityService) {
+  .controller('CityCtrl', ['$scope','CityService','CountryService', function ($scope, CityService, CountryService) {
         var self = this;
         self.city={cityId:null, city:'', countryId:null};
         self.cities=[];
+        $scope.countries = [];
+
+        CountryService.fetchAllCountries().then(function(countries){
+          $scope.countries = countries;
+        }, function(errResponse){
+          console.error("Error while fetching countries");
+        });
 
         self.fetchAllCities = function(){
         	CityService.fetchAllCities()

@@ -22,3 +22,6 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+
+### Persistence database config ###
+src/main/java/isep/web/sakila/jpa/config/PersistenceConfig.java
