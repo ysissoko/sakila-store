@@ -17,7 +17,11 @@ import java.util.List;
 @Table(name="country")
 @NamedQuery(name="Country.findAll", query="SELECT c FROM Country c")
 public class Country implements Serializable {
-	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5031144363402982089L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
