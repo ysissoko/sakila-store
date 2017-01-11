@@ -9,15 +9,14 @@
  */
 angular.module('sakilaWebapiFrontendApp')
   .controller('ActorCtrl',['$scope', 'ActorService', function ($scope, ActorService) {
-    var self = this;
-    self.actor={actorId:null,lastName:'',firstName:''};
-    self.actors=[];
+    $scope.actor={actorId:null,lastName:'',firstName:''};
+    $scope.actors=[];
 
-    self.fetchAllActors = function(){
+    var fetchAllActors = function(){
         ActorService.fetchAllActors()
             .then(
                  function(actors) {
-                    self.actors = actors;
+                    $scope.actors = actors;
                  },
                 function(errResponse){
                   console.error('Error while fetching Actors');
@@ -25,74 +24,74 @@ angular.module('sakilaWebapiFrontendApp')
              );
     };
 
-    self.createActor = function(actor){
+    var createActor = function(actor){
         ActorService.createActor(actor)
             .then(
-                self.fetchAllActors,
+                fetchAllActors,
                 function(errResponse){
                    console.error('Error while creating Actor.');
                 }
             );
     };
 
-    self.updateActor = function(actor){
+    var updateActor = function(actor){
         ActorService.updateActor(actor)
         .then(
-                self.fetchAllActors,
+                fetchAllActors,
                 function(errResponse){
                    console.error('Error while updating Actor.');
                 }
             );
     };
 
-    self.deleteActor = function(actorId){
+    var deleteActor = function(actorId){
         ActorService.deleteActor(actorId)
             .then(
-                self.fetchAllActors,
+                fetchAllActors,
                 function(errResponse){
                    console.error('Error while deleting Actor.');
                 }
             );
     };
 
-    self.fetchAllActors();
+    fetchAllActors();
 
-    self.submit = function() {
-        if(self.actor.actorId==null){
-            console.log('Saving New Actor', self.actor);
-            self.createActor(self.actor);
+    $scope.submit = function() {
+        if($scope.actor.actorId==null){
+            console.log('Saving New Actor', $scope.actor);
+            createActor($scope.actor);
         }else{
-            console.log('Actor updating with id ', self.actor.actorId);
-            console.log('Actor: ', self.actor);
-            self.updateActor(self.actor);
+            console.log('Actor updating with id ', $scope.actor.actorId);
+            console.log('Actor: ', $scope.actor);
+            updateActor($scope.actor);
         }
-        self.reset();
+        $scope.reset();
     };
 
-    self.edit = function(actorId){
+    $scope.edit = function(actorId){
         console.log('id to be edited', actorId);
-        for(var i = 0; i < self.actors.length; i++){
-            if(self.actors[i].actorId == actorId) {
-               self.actor = angular.copy(self.actors[i]);
+        for(var i = 0; i < $scope.actors.length; i++){
+            if($scope.actors[i].actorId == actorId) {
+               $scope.actor = angular.copy($scope.actors[i]);
                break;
             }
         }
     };
 
-    self.remove = function(actorId){
+    $scope.remove = function(actorId){
         console.log('id to be deleted', actorId);
-        for(var i = 0; i < self.actors.length; i++){
-            if(self.actors[i].actorId == actorId) {
-               self.reset();
+        for(var i = 0; i < $scope.actors.length; i++){
+            if($scope.actors[i].actorId == actorId) {
+               $scope.reset();
                break;
             }
         }
-        self.deleteActor(actorId);
+        deleteActor(actorId);
     };
 
 
-    self.reset = function(){
-        self.actor={actorId:null,lastName:'',firstName:''};
+    $scope.reset = function(){
+        $scope.actor={actorId:null,lastName:'',firstName:''};
         $scope.myForm.$setPristine(); //reset Form
     };
   }]);
